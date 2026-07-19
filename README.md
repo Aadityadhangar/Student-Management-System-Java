@@ -1,170 +1,347 @@
-# Student Management System
-### Java Swing + JDBC + MySQL 5.x | VS Code Setup Guide
+# 🎓 Student Management System
+
+> A Java Swing-based desktop application for efficiently managing student records using MySQL. The system provides secure administrator login, complete CRUD operations, input validation, and a modern graphical user interface.
+
+![Java](https://img.shields.io/badge/Java-23-orange?logo=openjdk)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue?logo=mysql)
+![Swing](https://img.shields.io/badge/Java-Swing-success)
+![JDBC](https://img.shields.io/badge/JDBC-Connector-red)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
-## Project Structure
+# 📖 Overview
+
+The **Student Management System** is a Java desktop application developed to simplify the management of student records. It provides administrators with a user-friendly interface to securely log in, add, update, delete, search, and manage student information stored in a MySQL database.
+
+The application follows a modular architecture using **Java Swing** for the graphical user interface and **JDBC** for seamless database connectivity.
+
+---
+
+# ✨ Features
+
+- 🔐 Secure Admin Login
+- ➕ Add New Students
+- ✏️ Update Student Information
+- 🗑️ Delete Student Records
+- 🔍 Search Students
+- 📋 View Student List
+- 💾 MySQL Database Integration
+- ✅ Input Validation
+- 🎨 Modern Java Swing Interface
+- ⚡ Fast CRUD Operations
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Java 23 | Programming Language |
+| Java Swing | Desktop GUI |
+| JDBC | Database Connectivity |
+| MySQL | Database |
+| MySQL Connector/J | JDBC Driver |
+| VS Code | Development Environment |
+
+---
+
+# 🏗️ System Workflow
 
 ```
-StudentManagementSystem/
-├── lib/
-│   └── mysql-connector-java-5.x.jar
+ Administrator
+       │
+       ▼
+Login Window
+       │
+       ▼
+ Authentication
+       │
+       ▼
+   Dashboard
+       │
+       ├───────────────┐
+       ▼               ▼
+  Add Student      Search Student
+       │               │
+       ▼               ▼
+ Update Student   Delete Student
+       │
+       ▼
+   MySQL Database
+```
+
+---
+
+# 📂 Project Structure
+
+```
+Student-Management-System/
+│
 ├── src/
-│   └── com/sms/
-│       ├── Main.java
-│       ├── db/
-│       │   └── DBConnection.java
-│       ├── model/
-│       │   └── Student.java
-│       ├── dao/
-│       │   ├── StudentDAO.java
-│       │   └── AdminDAO.java
-│       ├── ui/
-│       │   ├── LoginFrame.java
-│       │   ├── MainFrame.java
-│       │   └── AddEditStudentDialog.java
-│       └── util/
-│           ├── UITheme.java
-│           └── Validator.java
+│   └── com/
+│       └── sms/
+│           ├── dao/
+│           │   ├── AdminDAO.java
+│           │   └── StudentDAO.java
+│           │
+│           ├── db/
+│           │   └── DBConnection.java
+│           │
+│           ├── model/
+│           │   └── Student.java
+│           │
+│           ├── ui/
+│           │   ├── LoginFrame.java
+│           │   ├── MainFrame.java
+│           │   └── AddEditStudentDialog.java
+│           │
+│           ├── util/
+│           │   ├── UITheme.java
+│           │   └── Validator.java
+│           │
+│           └── Main.java
+│
+├── lib/
+│   └── mysql-connector-j-9.6.0.jar
+│
+├── Screenshots/
+│   ├── login-page.png
+│   ├── dashboard.png
+│   ├── add-student.png
+│   ├── student-list.png
+│   ├── edit-student.png
+│   ├── delete-confirmation.png
+│   └── database-table.png
+│
 ├── student_db.sql
-├── README.md   
-└── .gitignore 
-
-## Step-by-Step Setup
-
-### 1. Install Required Tools
-
-| Tool | Download |
-|------|----------|
-| JDK 8+ | https://www.oracle.com/java/technologies/downloads/ |
-| VS Code | https://code.visualstudio.com/ |
-| MySQL 5.7+ | https://dev.mysql.com/downloads/mysql/ |
-| MySQL Workbench | https://dev.mysql.com/downloads/workbench/ |
+├── README.md
+├── LICENSE
+└── .gitignore
+```
 
 ---
 
-### 2. Install VS Code Extension
+# 📸 Application Screenshots
 
-Open VS Code → `Ctrl+Shift+X` → search:
+## 🔐 Login Page
 
-**Extension Pack for Java** (by Microsoft) → Install
+Secure administrator authentication.
 
-This includes the Java compiler, debugger, and IntelliSense.
-
----
-
-### 3. Set Up the MySQL Database
-
-1. Open **MySQL Workbench**
-2. Connect to your local server
-3. Go to **File → Open SQL Script** → select `student_db.sql`
-4. Press **Ctrl+Shift+Enter** to run
-5. You should see: `Database setup complete!` and `10` students
+![Login Page](Screenshots/login-page.png)
 
 ---
 
-### 4. Add the MySQL Connector JAR
+## 🏠 Dashboard
 
-1. Download from: https://dev.mysql.com/downloads/connector/j/5.1.html
-   - Choose: **Platform Independent (Architecture Independent), ZIP Archive**
-2. Extract the zip — find the file named:
-   `mysql-connector-java-5.1.49.jar` (version may vary)
-3. Copy that `.jar` file into the **`lib/`** folder of this project:
-   ```
-   SMS_VSCode/
-   └── lib/
-       └── mysql-connector-java-5.1.49.jar   ← paste here
-   ```
-4. The `.vscode/settings.json` already tells VS Code to use `lib/**/*.jar`
+Manage all student records from a single dashboard.
+
+![Dashboard](Screenshots/dashboard.png)
 
 ---
 
-### 5. Update Your MySQL Password
+## ➕ Add Student
 
-Open `src/com/sms/db/DBConnection.java` and change:
+Add a new student with complete details.
+
+![Add Student](Screenshots/add-student.png)
+
+---
+
+## 📋 Student Records
+
+View all student records stored in the database.
+
+![Student List](Screenshots/student-list.png)
+
+---
+
+## ✏️ Edit Student
+
+Update existing student information.
+
+![Edit Student](Screenshots/edit-student.png)
+
+---
+
+## 🗑️ Delete Student
+
+Delete a student record after confirmation.
+
+![Delete Student](Screenshots/delete-confirmation.png)
+
+---
+
+## 🗄️ MySQL Database
+
+Student records stored in the MySQL database.
+
+![Database](Screenshots/database-table.png)
+
+---
+
+# 🚀 Installation
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/Student-Management-System.git
+```
+
+Replace `YOUR_USERNAME` with your GitHub username.
+
+---
+
+## Import Database
+
+Open **MySQL Workbench**.
+
+Import the file:
+
+```
+student_db.sql
+```
+
+This will automatically create:
+
+- student_db
+- admin table
+- students table
+
+---
+
+## Configure Database
+
+Open
+
+```
+src/com/sms/db/DBConnection.java
+```
+
+Update the database credentials if necessary.
 
 ```java
-private static final String PASSWORD = "root";   // ← your MySQL password
+private static final String URL = "jdbc:mysql://localhost:3306/student_db";
+private static final String USERNAME = "root";
+private static final String PASSWORD = "YOUR_PASSWORD";
 ```
 
 ---
 
-### 6. Run the Application
+## Add MySQL Connector
 
-**Option A — Click Run (recommended):**
-1. Open `src/com/sms/Main.java` in VS Code
-2. A **▶ Run** button appears above the `main` method
-3. Click it → Login window opens
+Place the following file inside the **lib** folder.
 
-**Option B — Terminal (from project root):**
+```
+mysql-connector-j-9.6.0.jar
+```
 
-**macOS / Linux:**
+---
+
+## Compile
+
 ```bash
-# Compile
-javac -cp "lib/*" -d bin $(find src -name "*.java")
-
-# Run
-java -cp "bin:lib/*" com.sms.Main
-```
-
-**Windows (Command Prompt):**
-```cmd
-# Compile
-for /r src %f in (*.java) do javac -cp "lib\*" -d bin "%f"
-
-# Run
-java -cp "bin;lib\*" com.sms.Main
+javac com/sms/**/*.java
 ```
 
 ---
 
-## Login Credentials
+## Run
 
-| Field    | Value      |
-|----------|------------|
-| Username | `admin`    |
-| Password | `admin123` |
-
----
-
-## Features & How to Use
-
-| Feature | How |
-|---------|-----|
-| **View all students** | Click "View Students" in sidebar |
-| **Add student** | Click "Add Student" or "+ Add New" button |
-| **Edit student** | Go to View Students → select a row → click "Edit Selected" |
-| **Delete student** | Go to View Students → select a row → click "Delete Selected" |
-| **Search** | Click "Search" in sidebar → type name/roll no/dept → press Enter |
-| **Dashboard** | Click "Dashboard" — shows count, stats, and recent records |
-| **Logout** | Click "Logout" in sidebar or top-right |
+```bash
+java com.sms.Main
+```
 
 ---
 
-## Common Errors & Fixes
+# 💻 Default Login Credentials
 
-| Error Message | Cause | Fix |
-|---|---|---|
-| `ClassNotFoundException: com.mysql.jdbc.Driver` | JAR missing | Add JAR to `lib/` folder (Step 4) |
-| `Access denied for user 'root'@'localhost'` | Wrong password | Update `DBConnection.java` (Step 5) |
-| `Unknown database 'student_db'` | SQL not run | Run `student_db.sql` in Workbench (Step 3) |
-| `Communications link failure` | MySQL not running | Start MySQL service from MySQL Workbench or Services |
-| `▶ Run button not visible` | Extension not installed | Install "Extension Pack for Java" (Step 2) |
-| `cannot find symbol` compile error | Package mismatch | Make sure `.vscode/settings.json` has `"java.project.sourcePaths": ["src"]` |
+| Username | Password |
+|----------|----------|
+| admin | admin123 |
 
 ---
 
-## Package Explanations
+# 📊 Database
 
-| Package | File | Purpose |
-|---------|------|---------|
-| `com.sms` | `Main.java` | Entry point — starts the app |
-| `com.sms.db` | `DBConnection.java` | Opens and manages MySQL connection via JDBC |
-| `com.sms.model` | `Student.java` | Plain Java object holding student data |
-| `com.sms.dao` | `StudentDAO.java` | INSERT / SELECT / UPDATE / DELETE via PreparedStatement |
-| `com.sms.dao` | `AdminDAO.java` | Login check — SELECT from admin table |
-| `com.sms.ui` | `LoginFrame.java` | Login window (shown first) |
-| `com.sms.ui` | `MainFrame.java` | Main app: sidebar + dashboard + view + search |
-| `com.sms.ui` | `AddEditStudentDialog.java` | Popup dialog for adding and editing students |
-| `com.sms.util` | `UITheme.java` | Colors, fonts, styled button/field/table factories |
-| `com.sms.util` | `Validator.java` | Validates name, email, phone, year before DB call |
+The application uses **MySQL** to store:
+
+- Administrator Login
+- Student Information
+
+Tables:
+
+- admin
+- students
+
+---
+
+# 🔒 Security
+
+This repository does **NOT** include:
+
+- Database passwords
+- MySQL server configuration
+- Sensitive credentials
+
+---
+
+# 🚀 Future Enhancements
+
+- Student Photo Upload
+- Attendance Management
+- Export to Excel
+- Export to PDF
+- Dashboard Analytics
+- Email Notifications
+- Role-Based Authentication
+- Cloud Database Support
+- Dark Mode
+- Backup & Restore
+
+---
+
+# 🎯 Learning Outcomes
+
+This project demonstrates knowledge of:
+
+- Java Programming
+- Object-Oriented Programming (OOP)
+- Java Swing GUI Development
+- JDBC
+- MySQL Database
+- CRUD Operations
+- Exception Handling
+- MVC-inspired Project Structure
+- Desktop Application Development
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+If you'd like to improve this project:
+
+1. Fork the repository.
+2. Create a new branch.
+3. Commit your changes.
+4. Open a Pull Request.
+
+---
+
+# 👨‍💻 Author
+
+**Aaditya Rajendra Dhangar**
+B.Tech – Artificial Intelligence & Data Science
+Sandip Institute of Technology & Research Centre, Nashik
+
+---
+
+# 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## ⭐ If you found this project useful, consider giving it a Star!
